@@ -1,0 +1,41 @@
+# Server
+server:
+  port: 8083
+
+# Logging
+logging:
+  config: classpath:logback-dev.xml
+
+# Application Configuration
+appConfigs:
+  cors:
+    enabled: true
+    pathPattern: /api/**
+    allowedOrigins:
+    - http://localhost:8999
+    - http://localhost:8484
+    allowedMethods:
+    - DELETE
+    - GET
+    - POST
+    - PUT
+    exposedHeaders:
+    - Authorization
+    allowCredentials: true
+  actuator:
+    smartMonitoringServer: "http://95.216.40.85:8484"
+    health: "/health"
+    info: "/info"
+  slackConfig:
+    channel: "general"
+    periodicalMessage:  "0 0 8,14,21 * * *"
+    FailureListener: "0/30 * * * * *"
+    successCaseMessage: "Hi guys, everything is OK!"
+    failureCaseMessage: "Oops, we have a problem!"
+    keywords:
+    - "details"
+    - "show"
+    - "status"
+    users:
+    - Taras Filiuk
+    token: "xoxb-541924408657-542427330211-SjHVEPBoBaq2hw2VjdAwgpPj"
